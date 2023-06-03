@@ -1,7 +1,7 @@
 # vim: filetype=gitconfig
 [user]
-	name = Georgi Dimitrov
-	email = georgijd92@gmail.com
+	name = YOURNAMEHERE
+	email = YOURMAILHERE
 [core]
 	editor = nvim
 	mergeoptions = --no-edit
