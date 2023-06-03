@@ -5,7 +5,7 @@
 ## How to install
 
 ```bash
-git clone https://github.com/georgijd/dotfiles.git ~/dotfiles
+git clone https://github.com/2easy/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make init
 ```
