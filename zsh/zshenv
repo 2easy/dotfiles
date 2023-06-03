@@ -6,6 +6,7 @@ export KEYTIMEOUT=1
 
 # Set the system-wide editor
 export EDITOR=nvim
+alias vi=nvim
 
 # Set XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -52,6 +53,11 @@ export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim' 'nvim')
 # Append ~/bin directory to PATH
 if [[ ! "${PATH}" == *${HOME}/bin* ]]; then
     export PATH="${HOME}/bin:${PATH}"
+fi
+
+# Append /opt/homebrew/bin directory to PATH
+if [[ ! "${PATH}" == */opt/homebrew/bin* ]]; then
+    export PATH="/opt/homebrew/bin:${PATH}"
 fi
 
 # Append current directory to PATH
