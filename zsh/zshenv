@@ -6,6 +6,7 @@ export KEYTIMEOUT=1
 
 # Set the system-wide editor
 export EDITOR=nvim
+alias vi=nvim
 
 # Set XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -53,3 +54,5 @@ fi
 if [[ ! "${PATH}" == *:.* ]]; then
     export PATH="${PATH}:."
 fi
+
+
