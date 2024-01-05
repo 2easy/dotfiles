@@ -29,3 +29,6 @@ require('lazy').setup({
     colorscheme = { 'catppuccin-mocha' },
   },
 })
+
+-- Helpers
+-- :lua print(vim.fn.stdpath ('data' ))
