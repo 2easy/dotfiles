@@ -1,8 +1,7 @@
 # vim: filetype=gitconfig
 [user]
-	name = Georgi Dimitrov
-	email = georgijd92@gmail.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINPuu8tIzBl3Dmxjr5pSSSn+v573UenWvMgyPWcYwjWZ
+	name = Piotr Olchawa
+	email = piotrekolchawa@gmail.com
 [core]
 	editor = nvim
 	mergeoptions = --no-edit
@@ -10,11 +9,8 @@
 	pager = less -F -X
 [commit]
 	template = ~/dotfiles/git/commit-template
-	gpgsign = true
 [gpg]
 	format = ssh
-[gpg "ssh"]
-	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [push]
 	default = simple
 	autoSetupRemote = true

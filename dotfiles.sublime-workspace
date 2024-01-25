@@ -1,0 +1,274 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "import requests\nimport sys\nimport re\nimport os\nimport json\nimport random\nimport time\n\ndef fetch_website_source(url):\n    \"\"\"\n    Fetch the source code of a given URL.bH\n    \"\"\"\n    try:\n        response = requests.get(url)\n        response.raise_for_status()\n        return response.text\n    except requests.exceptions.RequestException as e:\n        print(f\"Error fetching the website: {e}\")\n        sys.exit(1)\n\n\ndef extract_chapters(html_source):\n    \"\"\"\n    Extract objects like:\n    {\n       \"track\": 1,\n       \"name\": \"CHAPTER_NAME\",\n       \"chapter_link_dropbox\": \"https://zaudiobooks.com/wp-content/uploads/welcome-zaudiobooks.mp3\",\n       \"duration\": \"8\",\n       \"chapter_id\": \"NUMBER\",\n       \"post_id\": \"0\",\n    }\n    \"\"\"\n    pattern = r'\"name\":\\s*\"([^\"]+)\",\\s*\"chapter_link_dropbox\":\\s*\".*?\",\\s*\"duration\":\\s*\".*?\",\\s*\"chapter_id\":\\s*\"(\\d+)\"'\n    matches = re.findall(pattern, html_source)\n    return [{\"name\": m[0], \"chapter_id\": m[1]} for m in matches]\n    return chapters\n\n\ndef fetch_mp3_link(chapter_id):\n    \"\"\"\n    Fetch the MP3 link for a given chapter_id using the API call.\n    \"\"\"\n    url = 'https://api.galaxyaudiobook.com/api/getMp3Link'\n    headers = {\n        'content-type': 'application/json; charset=UTF-8'\n    }\n    payload = {\n        \"chapterId\": chapter_id,\n        \"serverType\": 1\n    }\n\n    try:\n        response = requests.post(url, headers=headers, json=payload)\n        response.raise_for_status()\n        data = response.json()\n        return data.get('link_mp3', None)\n    except requests.exceptions.RequestException as e:\n        print(f\"Error fetching MP3 link for chapter_id {chapter_id}: {e}\")\n        return None\n\n\ndef download_mp3_file(mp3_url, output_dir, chapter_name):\n    \"\"\"\n    Download the MP3 file from the given URL and save it to the specified directory.\n    \"\"\"\n    try:\n        response = requests.get(mp3_url, stream=True)\n        response.raise_for_status()\n\n        # Create the output directory if it doesn't exist\n        if not os.path.exists(output_dir):\n            os.makedirs(output_dir)\n\n        # Create the output file path\n        sanitized_name = \"\".join(c for c in chapter_name if c.isalnum() or c in \" _-\").rstrip()\n        file_path = os.path.join(output_dir, f\"{sanitized_name}.mp3\")\n\n        # Write the MP3 file to disk\n        with open(file_path, 'wb') as file:\n            for chunk in response.iter_content(chunk_size=8192):\n                file.write(chunk)\n        print(f\"Downloaded: {file_path}\")\n    except requests.exceptions.RequestException as e:\n        print(f\"Error downloading MP3 file from {mp3_url}: {e}\")\n\n\ndef main():\n    if len(sys.argv) != 3:\n        print(\"Usage: python fetch_and_save_mp3_by_chapter_name.py <url> <output_directory>\")\n        sys.exit(1)\n\n    url = sys.argv[1]\n    output_dir = sys.argv[2]\n\n    print(\"Fetching website source...\")\n    html_source = fetch_website_source(url)\n    print(\"Source fetched. Extracting chapter data...\")\n\n    chapters = extract_chapters(html_source)\n\n    if chapters:\n        print(\"Chapters found:\")\n        for chapter in chapters:\n            print(f\"Name: {chapter['name']}, Chapter ID: {chapter['chapter_id']}\")\n\n        print(\"\\nFetching MP3 links and downloading files...\")\n        for chapter in chapters:\n            # Skip downloading if the file already exists\n            # Create the output file path\n            sanitized_name = \"\".join(c for c in chapter['name'] if c.isalnum() or c in \" _-\").rstrip()\n            file_path = os.path.join(output_dir, f\"{sanitized_name}.mp3\")\n            if os.path.exists(file_path):\n                print(f\"File already exists: {file_path}. Skipping download.\")\n                continue\n            mp3_link = fetch_mp3_link(chapter[\"chapter_id\"])\n            if mp3_link:\n                delay = random.uniform(1, 5)  # Introduce a random delay of 1-3 seconds\n                print(f\"Waiting {delay:.2f} seconds before fetching the next file...\")\n                time.sleep(delay)\n                download_mp3_file(mp3_link, output_dir, chapter[\"name\"])\n            else:\n                print(f\"Chapter Name {chapter['name']} (ID {chapter['chapter_id']}): No MP3 link found.\")\n    else:\n        print(\"No chapter data was found in the page.\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+			"file": "/Users/peter/foo/audiobooks/download.py",
+			"file_size": 4279,
+			"file_write_time": 133797651321550454,
+			"settings":
+			{
+				"buffer_size": 4281,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					1,
+					"left_delete",
+					null,
+					"AQAAAOEOAAAAAAAA4Q4AAAAAAAABAAAAMw",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAOIOAAAAAAAA4g4AAAAAAAAAAAAAAADwvw"
+				],
+				[
+					4,
+					1,
+					"insert",
+					{
+						"characters": "5"
+					},
+					"AQAAAOEOAAAAAAAA4g4AAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAOEOAAAAAAAA4Q4AAAAAAAAAAAAAAADwvw"
+				],
+				[
+					8,
+					1,
+					"insert",
+					{
+						"characters": "b"
+					},
+					"AQAAAKYAAAAAAAAApwAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKYAAAAAAAAApgAAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					9,
+					1,
+					"insert",
+					{
+						"characters": "H"
+					},
+					"AQAAAKcAAAAAAAAAqAAAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAKcAAAAAAAAApwAAAAAAAAAAAAAAAADwvw"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/peter/dotfiles"
+	],
+	"file_history":
+	[
+		"/Users/peter/dotfiles/git/gitignore",
+		"/Users/peter/go/src/github.com/2easy/zmk-config-urchin/config/urchin.keymap",
+		"/Users/peter/go/src/github.com/2easy/go-Stand-Up-Pls/main.go"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"*.sublime-project"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/peter/foo/audiobooks/download.py",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4281,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								900,
+								900
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 220.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "dotfiles.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"gitign",
+				"git/gitignore"
+			],
+			[
+				"keyma",
+				"config/urchin.keymap"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "ur",
+		"selected_items":
+		[
+			[
+				"ur",
+				"~/go/src/github.com/2easy/zmk-config-urchin/urchin.sublime-project"
+			],
+			[
+				"",
+				"~/go/src/github.com/2easy/zmk-config-urchin/dotfiles.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 238.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
