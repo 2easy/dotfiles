@@ -28,6 +28,8 @@ keymap.set('n', '<M-l>', ':vertical resize +10<CR>', { desc = 'Increase window w
 keymap.set('n', '0', '^', { desc = 'Go to first non-whitespace character of the line' })
 keymap.set('n', 'Y', 'y$', { desc = 'Yank til end of line' })
 keymap.set('n', 'ZX', ':qa<CR>', { desc = 'Quitall' })
+keymap.set('n', '<Tab>', ':bnext<CR>', { desc = 'Next Buffer' })
+keymap.set('n', '<S-Tab>', ':bprev<CR>', { desc = 'Previous Buffer' })
 
 -- Abbreviations
 vim.api.nvim_command('iab cdate <c-r>=strftime("%Y-%m-%d")<CR>')
