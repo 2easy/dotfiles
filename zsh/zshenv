@@ -55,4 +55,4 @@ if [[ ! "${PATH}" == *:.* ]]; then
     export PATH="${PATH}:."
 fi
 
-
+alias vi=nvim
