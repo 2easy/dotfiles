@@ -9,3 +9,5 @@ tags
 _mtest
 .pyc
 .DS_Store
+*.sublime-project
+*.sublime-workspace
