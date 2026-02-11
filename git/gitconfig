@@ -9,7 +9,6 @@
 	pager = less -F -X
 [commit]
 	template = ~/dotfiles/git/commit-template
-	gpgsign = true
 [push]
 	default = simple
 	autoSetupRemote = true
