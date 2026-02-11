@@ -1,0 +1,15 @@
+.vim
+.classpath
+.project
+.settings/
+tags
+.luarc.json
+
+# Additional ignore files
+_mtest
+.pyc
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.vscode
+dist
