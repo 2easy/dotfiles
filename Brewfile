@@ -3,6 +3,7 @@ cask "kitty"
 
 # Shell
 brew "fish"
+brew "bat"
 
 # Editor
 brew "neovim"

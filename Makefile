@@ -3,7 +3,7 @@
 DOTFILES := $(shell pwd)
 CONFIG := $(HOME)/.config
 
-all: install symlink
+all: symlink install
 
 install:
 	@echo "Installing packages..."
@@ -23,6 +23,7 @@ symlink:
 	@mkdir -p $(CONFIG)
 	@ln -sf $(DOTFILES)/kitty $(CONFIG)/kitty
 	@ln -sf $(DOTFILES)/fish $(CONFIG)/fish
+	@ln -sf $(DOTFILES)/bat $(CONFIG)/bat
 	@ln -sf $(DOTFILES)/nvim $(CONFIG)/nvim
 	@ln -sf $(DOTFILES)/git/gitconfig $(HOME)/.gitconfig
 	@ln -sf $(DOTFILES)/git/gitignore $(HOME)/.gitignore
