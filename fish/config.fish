@@ -12,6 +12,10 @@ abbr -a lt 'lsd --tree'
 # neovim abbreviations
 abbr -a vi nvim
 
+# claude abbreviations
+abbr -a c claude
+abbr -a zc zclaude
+
 if test -d /opt/homebrew/bin
     # Apple Silicon Mac
     fish_add_path /opt/homebrew/bin

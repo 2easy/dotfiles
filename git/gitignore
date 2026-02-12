@@ -13,3 +13,7 @@ _mtest
 *.sublime-workspace
 .vscode
 dist
+
+# Kitty theme files (managed by kitty)
+kitty/themes.conf
+kitty/current-theme.conf

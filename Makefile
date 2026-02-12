@@ -18,6 +18,9 @@ else
 	@exit 1
 endif
 
+kitty-configure:
+	@./scripts/kitty.sh
+
 install-ai:
 	@echo "Installing AI tools..."
 ifeq ($(shell uname), Darwin)
@@ -30,12 +33,11 @@ endif
 symlink:
 	@echo "Creating symlinks..."
 	@mkdir -p $(CONFIG)
-	@ln -sf $(DOTFILES)/kitty $(CONFIG)/kitty
-	@ln -sf $(DOTFILES)/fish $(CONFIG)/fish
-	@ln -sf $(DOTFILES)/bat $(CONFIG)/bat
-	@ln -sf $(DOTFILES)/nvim $(CONFIG)/nvim
-	@ln -sf $(DOTFILES)/git/gitconfig $(HOME)/.gitconfig
-	@ln -sf $(DOTFILES)/git/gitignore $(HOME)/.gitignore
+	@[ -L $(CONFIG)/kitty ] || ln -sf $(DOTFILES)/kitty $(CONFIG)/kitty
+	@[ -L $(CONFIG)/fish ] || ln -sf $(DOTFILES)/fish $(CONFIG)/fish
+	@[ -L $(CONFIG)/bat ] || ln -sf $(DOTFILES)/bat $(CONFIG)/bat
+	@[ -L $(HOME)/.gitconfig ] || ln -sf $(DOTFILES)/git/gitconfig $(HOME)/.gitconfig
+	@[ -L $(HOME)/.gitignore ] || ln -sf $(DOTFILES)/git/gitignore $(HOME)/.gitignore
 	@echo "Symlinks created."
 
 help:
