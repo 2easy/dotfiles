@@ -9,6 +9,9 @@ abbr -a la 'lsd -a'
 abbr -a lla 'lsd -la'
 abbr -a lt 'lsd --tree'
 
+# neovim abbreviations
+abbr -a vi nvim
+
 if test -d /opt/homebrew/bin
     # Apple Silicon Mac
     fish_add_path /opt/homebrew/bin
