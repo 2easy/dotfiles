@@ -1,4 +1,4 @@
-.PHONY: all install symlink help
+.PHONY: all install install-ai symlink help
 
 DOTFILES := $(shell pwd)
 CONFIG := $(HOME)/.config
@@ -13,6 +13,15 @@ ifeq ($(shell uname), Darwin)
 		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
 	fi
 	brew bundle --file=$(DOTFILES)/Brewfile
+else
+	@echo "Only macOS is currently supported via Homebrew."
+	@exit 1
+endif
+
+install-ai:
+	@echo "Installing AI tools..."
+ifeq ($(shell uname), Darwin)
+	brew bundle --file=$(DOTFILES)/Brewfile.ai
 else
 	@echo "Only macOS is currently supported via Homebrew."
 	@exit 1
@@ -33,7 +42,8 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  all      - Run install and symlink (default)"
-	@echo "  install  - Install packages via Homebrew"
-	@echo "  symlink  - Create symlinks to ~/.config"
-	@echo "  help     - Show this help message"
+	@echo "  all        - Run install and symlink (default)"
+	@echo "  install    - Install packages via Homebrew"
+	@echo "  install-ai - Install AI tools (claude-code)"
+	@echo "  symlink    - Create symlinks to ~/.config"
+	@echo "  help       - Show this help message"
