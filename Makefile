@@ -33,7 +33,6 @@ endif
 symlink:
 	@echo "Creating symlinks..."
 	@mkdir -p $(CONFIG)
-	@[ -L $(CONFIG)/kitty ] || ln -sf $(DOTFILES)/kitty $(CONFIG)/kitty
 	@[ -L $(CONFIG)/fish ] || ln -sf $(DOTFILES)/fish $(CONFIG)/fish
 	@[ -L $(CONFIG)/bat ] || ln -sf $(DOTFILES)/bat $(CONFIG)/bat
 	@[ -L $(HOME)/.gitconfig ] || ln -sf $(DOTFILES)/git/gitconfig $(HOME)/.gitconfig

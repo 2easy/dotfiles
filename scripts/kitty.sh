@@ -8,8 +8,8 @@ DOTFILES_DIR="${DOTFILES_DIR:=${HOME}/dotfiles}"
 KITTY_CONFIG_DIR="${XDG_CONFIG_HOME:=${HOME}/.config}/kitty"
 
 function configure_kitty() {
-    sudo ln -fs "/Applications/kitty.app/Contents/MacOS/kitty" "${HOME}/bin/"
-    sudo ln -fs "/Applications/kitty.app/Contents/MacOS/kitten" "${HOME}/bin/"
+    ln -fs "/Applications/kitty.app/Contents/MacOS/kitty" "${HOME}/bin/"
+    ln -fs "/Applications/kitty.app/Contents/MacOS/kitten" "${HOME}/bin/"
 
     mkdir -p "${KITTY_CONFIG_DIR}"
     ln -fs "${DOTFILES_DIR}"/kitty/* "${KITTY_CONFIG_DIR}/"
