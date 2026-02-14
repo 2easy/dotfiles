@@ -75,6 +75,9 @@ id_rsa*
 .config/fish/conf.d
 .config/fish/completions
 
+# Neovim - lazy.nvim lock file
+.config/nvim/lazy-lock.json
+
 # Kitty theme files (managed by kitty)
 .config/kitty/themes.conf
 .config/kitty/current-theme.conf
