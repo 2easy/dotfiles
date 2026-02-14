@@ -23,3 +23,5 @@ if test -d /opt/homebrew/bin
 end
 
 fish_add_path /usr/local/bin
+
+set -Ux EDITOR nvim

@@ -8,7 +8,7 @@
 	excludesFile = ~/dotfiles/git/gitignore
 	pager = less -F -X
 [commit]
-	template = ~/dotfiles/git/commit-template
+	template = ~/dotfiles/git/gitmessage
 [push]
 	default = simple
 	autoSetupRemote = true
