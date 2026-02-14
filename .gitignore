@@ -1,5 +1,28 @@
-# Claude Code
-.claude/
+# === Global gitignore (symlinked to ~/.gitignore) ===
+
+# Vim / Neovim
+.vim
+*.swp
+*.swo
+*.swn
+*~
+.netrwhist
+tags
+.luarc.json
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build / generated
+.classpath
+.project
+.settings/
+dist
+_mtest
+.pyc
 
 # macOS
 .DS_Store
@@ -10,29 +33,11 @@
 .AppleDouble
 .LSOverride
 
-# Git private/local settings
-git/extras
-
-# Fish shell - machine-specific files
-fish/fish_variables
-fish/fish_history
-fish/fishd.*
-fish/secrets.fish
-fish/private.fish
-# Plugins add to these directories upon installation
-fish/functions
-fish/conf.d
-fish/completions
-
-# Editors and IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*.swn
-*~
-.vim/
-.netrwhist
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
 # Backup files
 *.bak
@@ -51,8 +56,25 @@ fish/completions
 id_rsa*
 *.cert
 
-# OS generated files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
+# === Repo-specific patterns ===
+
+# Claude Code
+.claude/
+
+# Git private/local settings
+.gitextras
+
+# Fish shell - machine-specific files
+.config/fish/fish_variables
+.config/fish/fish_history
+.config/fish/fishd.*
+.config/fish/secrets.fish
+.config/fish/private.fish
+# Plugins add to these directories upon installation
+.config/fish/functions
+.config/fish/conf.d
+.config/fish/completions
+
+# Kitty theme files (managed by kitty)
+.config/kitty/themes.conf
+.config/kitty/current-theme.conf

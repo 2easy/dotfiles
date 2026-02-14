@@ -19,7 +19,7 @@ if ! command -v brew >/dev/null 2>&1; then
     fi
 fi
 
-# Run make all
+# Install packages (including stow) and stow dotfiles
 echo "Running make all..."
 make all
 

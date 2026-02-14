@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Minimal macOS dotfiles for development. The repo is structured to be cloned to `~/dotfiles` and uses symlinks to dotfiles in `~/.config/` and `~`.
+Minimal macOS dotfiles for development, managed with [GNU Stow](https://www.gnu.org/software/stow/). The repo is structured to be cloned to `~/dotfiles` and uses stow to create symlinks into `$HOME`.
 
 ## Installation
 
@@ -19,32 +19,33 @@ Or manually via Make:
 
 ```bash
 make install   # Install Homebrew packages
-make symlink   # Create symlinks
+make stow      # Stow dotfiles into ~
 make all       # Both (default)
 ```
 
 ## Architecture
 
-The repository uses symlinks rather than copying files:
+The repository uses GNU Stow. The directory structure mirrors `$HOME` — stow creates symlinks from `~` into the repo. For example:
 
-- **App configs** (`kitty/`, `fish/`, `nvim/`) → symlinked to `~/.config/<name>/`
-- **Git configs** (`git/gitconfig`, `git/gitignore`) → symlinked to `~/.gitconfig`, `~/.gitignore`
+- `~/dotfiles/.config/fish/config.fish` → `~/.config/fish/config.fish`
+- `~/dotfiles/.gitconfig` → `~/.gitconfig`
 
-This means edits in the repo are immediately reflected in the installed location, and vice versa.
+To add a new config, place it at the correct path relative to `$HOME` inside the repo. No Makefile changes needed. `.stow-local-ignore` controls which repo files (Makefile, README, etc.) are excluded from stowing.
 
 ## Key Files
 
 - `install.sh` - Bootstrap script that installs Homebrew (if missing) and runs `make all`
-- `Makefile` - Orchestrates package installation via Homebrew and symlink creation
-- `Brewfile` - Defines Homebrew packages (kitty, fish, neovim, claude-code)
-- `git/gitconfig` - Git configuration with aliases, colors, and includes `~/dotfiles/git/extras`
-- `git/gitignore` - Global gitignore
+- `Makefile` - Orchestrates package installation via Homebrew and stow operations
+- `Brewfile` - Defines Homebrew packages (kitty, fish, neovim, stow, etc.)
+- `.gitconfig` - Git configuration with aliases, colors, and includes `~/.gitextras`
+- `.gitignore` - Global gitignore (symlinked to `~/.gitignore`)
+- `.stow-local-ignore` - Files excluded from stowing
 
 ## Git Configuration
 
-The gitconfig references an include file at `~/dotfiles/git/extras` for user-specific or private settings that shouldn't be committed.
+The gitconfig references an include file at `~/.gitextras` for user-specific or private settings that shouldn't be committed.
 
 ## Adding New Configs
 
-1. Create the config directory in the repo root (e.g., `tool/`)
-2. Add a symlink target in `make symlink` following the existing pattern
+1. Create the file at the correct path relative to `$HOME` (e.g., `.config/tool/config`)
+2. Run `make restow` to update symlinks

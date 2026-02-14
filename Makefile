@@ -1,9 +1,8 @@
-.PHONY: all install install-ai symlink help
+.PHONY: all install install-ai stow unstow restow kitty-configure help
 
 DOTFILES := $(shell pwd)
-CONFIG := $(HOME)/.config
 
-all: symlink install
+all: install stow
 
 install:
 	@echo "Installing packages..."
@@ -18,6 +17,17 @@ else
 	@exit 1
 endif
 
+stow:
+	@echo "Stowing dotfiles..."
+	@stow -v -d $(HOME) -t $(HOME) dotfiles
+	@echo "Dotfiles stowed."
+
+unstow:
+	@stow -v -d $(HOME) -t $(HOME) -D dotfiles
+
+restow:
+	@stow -v -d $(HOME) -t $(HOME) -R dotfiles
+
 kitty-configure:
 	@./scripts/kitty.sh
 
@@ -30,21 +40,14 @@ else
 	@exit 1
 endif
 
-symlink:
-	@echo "Creating symlinks..."
-	@mkdir -p $(CONFIG)
-	@[ -L $(CONFIG)/fish ] || ln -sf $(DOTFILES)/fish $(CONFIG)/fish
-	@[ -L $(CONFIG)/bat ] || ln -sf $(DOTFILES)/bat $(CONFIG)/bat
-	@[ -L $(HOME)/.gitconfig ] || ln -sf $(DOTFILES)/git/gitconfig $(HOME)/.gitconfig
-	@[ -L $(HOME)/.gitignore ] || ln -sf $(DOTFILES)/git/gitignore $(HOME)/.gitignore
-	@echo "Symlinks created."
-
 help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  all        - Run install and symlink (default)"
+	@echo "  all        - Run install and stow (default)"
 	@echo "  install    - Install packages via Homebrew"
 	@echo "  install-ai - Install AI tools (claude-code)"
-	@echo "  symlink    - Create symlinks to ~/.config"
+	@echo "  stow       - Stow dotfiles into ~"
+	@echo "  unstow     - Remove stowed symlinks"
+	@echo "  restow     - Restow (unstow + stow)"
 	@echo "  help       - Show this help message"

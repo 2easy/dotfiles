@@ -5,10 +5,10 @@
 [core]
 	editor = nvim
 	mergeoptions = --no-edit
-	excludesFile = ~/dotfiles/git/gitignore
+	excludesFile = ~/.gitignore
 	pager = less -F -X
 [commit]
-	template = ~/dotfiles/git/gitmessage
+	template = ~/.gitmessage
 [push]
 	default = simple
 	autoSetupRemote = true
@@ -48,6 +48,6 @@
 [http]
 	postBuffer = 1024288000
 [include]
-	path = ~/dotfiles/git/extras
+	path = ~/.gitextras
 [fetch]
 	prune = true

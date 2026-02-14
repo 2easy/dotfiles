@@ -12,7 +12,6 @@ function configure_kitty() {
     ln -fs "/Applications/kitty.app/Contents/MacOS/kitten" "${HOME}/bin/"
 
     mkdir -p "${KITTY_CONFIG_DIR}"
-    ln -fs "${DOTFILES_DIR}"/kitty/* "${KITTY_CONFIG_DIR}/"
 
     kitty +kitten themes --config-file-name=themes.conf Catppuccin-Mocha
 }

@@ -1,0 +1,12 @@
+# Defaults to keep
+\.git
+\.gitmodules
+
+# Project files
+^/README.*
+^/LICENSE.*
+^/CLAUDE\.md
+^/Makefile
+^/Brewfile.*
+^/install\.sh
+^/scripts
