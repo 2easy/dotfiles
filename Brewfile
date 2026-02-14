@@ -13,6 +13,7 @@ brew "gh"
 brew "htop"
 brew "jq"
 brew "lsd"
+brew "ripgrep"
 brew "yq"
 
 # Editor
