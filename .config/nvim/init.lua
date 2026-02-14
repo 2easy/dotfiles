@@ -23,6 +23,14 @@ vim.g["sneak#use_ic_scs"] = 1
 
 -- Plugins
 require("lazy").setup({
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("catppuccin-mocha")
+    end,
+  },
   { "justinmk/vim-sneak" },
   {
     "folke/snacks.nvim",
