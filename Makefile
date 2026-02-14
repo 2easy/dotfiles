@@ -1,4 +1,4 @@
-.PHONY: all install install-ai stow unstow restow kitty-configure help
+.PHONY: all install install-ai stow unstow restow help
 
 DOTFILES := $(shell pwd)
 
@@ -27,9 +27,6 @@ unstow:
 
 restow:
 	@stow -v -d $(HOME) -t $(HOME) -R dotfiles
-
-kitty-configure:
-	@./scripts/kitty.sh
 
 install-ai:
 	@echo "Installing AI tools..."

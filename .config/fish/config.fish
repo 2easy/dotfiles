@@ -1,5 +1,10 @@
 if status is-interactive
   fish_config theme choose "Lava"
+
+  # Set kitty theme once if not yet configured
+  if set -q KITTY_PID; and not test -e ~/.config/kitty/themes.conf
+    kitty +kitten themes --config-file-name=themes.conf Catppuccin-Mocha
+  end
 end
 
 # lsd abbreviations
