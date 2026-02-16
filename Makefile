@@ -19,14 +19,14 @@ endif
 
 stow:
 	@echo "Stowing dotfiles..."
-	@stow -v -d $(HOME) -t $(HOME) dotfiles
+	@stow -v -d $(DOTFILES) -t $(HOME) .
 	@echo "Dotfiles stowed."
 
 unstow:
-	@stow -v -d $(HOME) -t $(HOME) -D dotfiles
+	@stow -v -d $(DOTFILES) -t $(HOME) -D .
 
 restow:
-	@stow -v -d $(HOME) -t $(HOME) -R dotfiles
+	@stow -v -d $(DOTFILES) -t $(HOME) -R .
 
 install-ai:
 	@echo "Installing AI tools..."
