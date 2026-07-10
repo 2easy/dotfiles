@@ -17,6 +17,9 @@ abbr -a lt 'eza --tree'
 # neovim abbreviations
 abbr -a vi nvim
 
+# btop abbreviations
+abbr -a top btop
+
 # claude abbreviations
 abbr -a c claude
 abbr -a zc zclaude
