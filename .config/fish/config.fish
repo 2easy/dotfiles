@@ -24,6 +24,8 @@ abbr -a top btop
 abbr -a c claude
 abbr -a zc zclaude
 
+set -Ux brew_path /opt/homebrew
+
 if test -d /opt/homebrew/bin
     # Apple Silicon Mac
     fish_add_path /opt/homebrew/bin
@@ -31,7 +33,13 @@ if test -d /opt/homebrew/bin
 end
 
 fish_add_path /usr/local/bin
+fish_add_path "$HOME/bin"
 
 set -Ux EDITOR nvim
 
 zoxide init fish | source
+
+# Machine-specific overrides
+if test -f $__fish_config_dir/extras.fish
+    source $__fish_config_dir/extras.fish
+end
