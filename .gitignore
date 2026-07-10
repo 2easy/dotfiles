@@ -56,6 +56,13 @@ $RECYCLE.BIN/
 id_rsa*
 *.cert
 
+# Python virtualenvs
+.venv
+venv
+
+# Cursor
+.cursorignore
+
 # === Repo-specific patterns ===
 
 # Claude Code
@@ -70,6 +77,7 @@ id_rsa*
 .config/fish/fishd.*
 .config/fish/secrets.fish
 .config/fish/private.fish
+.config/fish/extras.fish
 # Plugins add to these directories upon installation
 .config/fish/functions
 .config/fish/conf.d
