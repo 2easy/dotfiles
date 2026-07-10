@@ -6,7 +6,11 @@
 	editor = nvim
 	mergeoptions = --no-edit
 	excludesFile = ~/.gitignore
-	pager = less -F -X
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
 [commit]
 	template = ~/.gitmessage
 [push]
