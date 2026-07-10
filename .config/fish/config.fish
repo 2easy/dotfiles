@@ -30,3 +30,5 @@ end
 fish_add_path /usr/local/bin
 
 set -Ux EDITOR nvim
+
+zoxide init fish | source

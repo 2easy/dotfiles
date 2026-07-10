@@ -20,6 +20,7 @@ brew "jq"
 brew "lsd"
 brew "ripgrep"
 brew "yq"
+brew "zoxide"
 
 # Editor
 brew "neovim"
