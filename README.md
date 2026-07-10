@@ -6,6 +6,7 @@ Minimal macOS dotfiles for development, managed with [GNU Stow](https://www.gnu.
 
 | Tool | Purpose |
 |------|---------|
+| **ghostty** | Fast, GPU-accelerated terminal emulator |
 | **fish** | Interactive shell with sensible defaults |
 | **neovim** | Modal text editor with lazy.nvim plugin manager |
 | **git** | Version control with aliases and color |
