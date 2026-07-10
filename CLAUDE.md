@@ -36,7 +36,7 @@ To add a new config, place it at the correct path relative to `$HOME` inside the
 
 - `install.sh` - Bootstrap script that installs Homebrew (if missing) and runs `make all`
 - `Makefile` - Orchestrates package installation via Homebrew and stow operations
-- `Brewfile` - Defines Homebrew packages (kitty, fish, neovim, stow, etc.)
+- `Brewfile` - Defines Homebrew packages (ghostty, fish, neovim, stow, etc.)
 - `.gitconfig` - Git configuration with aliases, colors, and includes `~/.gitextras`
 - `.gitignore` - Global gitignore (symlinked to `~/.gitignore`)
 - `.stow-local-ignore` - Files excluded from stowing

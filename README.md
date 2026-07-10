@@ -6,7 +6,6 @@ Minimal macOS dotfiles for development, managed with [GNU Stow](https://www.gnu.
 
 | Tool | Purpose |
 |------|---------|
-| **kitty** | Fast, feature-rich terminal emulator |
 | **fish** | Interactive shell with sensible defaults |
 | **neovim** | Modal text editor with lazy.nvim plugin manager |
 | **git** | Version control with aliases and color |
@@ -71,20 +70,16 @@ chsh -s $(which fish)
 ~/dotfiles/
 ├── .config/
 │   ├── bat/config           # bat configuration
-│   ├── fish/
-│   │   ├── config.fish      # Shell configuration
-│   │   └── fish_plugins     # Fisher plugin list
-│   └── kitty/
-│       └── kitty.conf       # Terminal configuration
+│   └── fish/
+│       ├── config.fish      # Shell configuration
+│       └── fish_plugins     # Fisher plugin list
 ├── .gitconfig               # Git configuration
 ├── .gitignore               # Global gitignore
 ├── .gitmessage              # Commit message template
 ├── .stow-local-ignore       # Files stow should skip
 ├── Brewfile                 # Homebrew packages
 ├── Makefile                 # Task runner
-├── install.sh               # Bootstrap script
-└── scripts/
-    └── kitty.sh             # Kitty theme setup
+└── install.sh               # Bootstrap script
 ```
 
 ## License

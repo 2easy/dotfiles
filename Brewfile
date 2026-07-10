@@ -1,6 +1,5 @@
 # Terminal
 cask "ghostty"
-cask "kitty"
 
 # Shell
 brew "bash"
