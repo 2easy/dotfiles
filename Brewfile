@@ -13,9 +13,10 @@ brew "stow"
 
 # CLI Tools
 brew "bat"
+brew "btop"
+brew "dust"
 brew "eza"
 brew "fd"
-brew "btop"
 brew "gh"
 brew "git-delta"
 brew "jq"
