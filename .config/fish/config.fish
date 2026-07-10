@@ -7,12 +7,12 @@ if status is-interactive
   end
 end
 
-# lsd abbreviations
-abbr -a ls lsd
-abbr -a l 'lsd -l'
-abbr -a la 'lsd -a'
-abbr -a lla 'lsd -la'
-abbr -a lt 'lsd --tree'
+# eza abbreviations
+abbr -a ls eza
+abbr -a l 'eza -l'
+abbr -a la 'eza -a'
+abbr -a lla 'eza -la'
+abbr -a lt 'eza --tree'
 
 # neovim abbreviations
 abbr -a vi nvim
