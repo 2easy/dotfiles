@@ -1,4 +1,5 @@
 # Terminal
+cask "ghostty"
 cask "kitty"
 
 # Shell

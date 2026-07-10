@@ -1,0 +1,15 @@
+command = /opt/homebrew/bin/fish
+shell-integration = fish
+
+theme = Catppuccin Mocha
+background-opacity = 0.90
+background-blur = true
+
+font-size = 17
+
+cursor-style = block
+cursor-style-blink = false
+
+copy-on-select = true
+
+macos-option-as-alt = true
