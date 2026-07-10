@@ -8,9 +8,17 @@ Minimal macOS dotfiles for development, managed with [GNU Stow](https://www.gnu.
 |------|---------|
 | **ghostty** | Fast, GPU-accelerated terminal emulator |
 | **fish** | Interactive shell with sensible defaults |
+| **stow** | Symlink manager used to install these dotfiles |
 | **neovim** | Modal text editor with lazy.nvim plugin manager |
-| **git** | Version control with aliases and color |
+| **git** + **git-delta** | Version control with aliases, color, and a delta pager |
+| **gh** | GitHub CLI |
 | **bat** | A cat clone with syntax highlighting |
+| **eza** | A modern replacement for `ls` |
+| **ripgrep** | Fast recursive grep (`rg`) |
+| **fd** | Fast, user-friendly `find` alternative |
+| **btop** | Resource monitor (replaces `top`/`htop`) |
+| **dust** | Disk usage analyzer (`du` alternative) |
+| **zoxide** | Smarter `cd` that learns your habits |
 
 ## Prerequisites
 
