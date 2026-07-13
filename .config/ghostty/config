@@ -1,7 +1,7 @@
 command = /opt/homebrew/bin/fish
 shell-integration = fish
 
-theme = Catppuccin Mocha
+theme = Alien Blood
 background-opacity = 0.90
 background-blur = true
 
