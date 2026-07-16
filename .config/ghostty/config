@@ -1,7 +1,10 @@
+# ~/.config/ghostty/config
+
 command = /opt/homebrew/bin/fish
 shell-integration = fish
 
-theme = Alien Blood
+config-file = ?auto/theme.ghostty
+
 background-opacity = 0.90
 background-blur = true
 
@@ -13,3 +16,27 @@ cursor-style-blink = false
 copy-on-select = true
 
 macos-option-as-alt = true
+
+# ── Reload: hold Space + R ──
+keybind = ctrl+shift+alt+r=reload_config
+
+# ── Splits: hold Space + V (vertical) / D (down) ──
+keybind = ctrl+shift+alt+v=new_split:right
+keybind = ctrl+shift+alt+d=new_split:down
+
+# ── Focus between splits: hold Space + M/N/E/I (matches nav layer) ──
+keybind = ctrl+shift+alt+m=goto_split:left
+keybind = ctrl+shift+alt+n=goto_split:down
+keybind = ctrl+shift+alt+e=goto_split:up
+keybind = ctrl+shift+alt+i=goto_split:right
+
+# ── Resize: meh + super (hold R/I for LGUI) + M/N/E/I ──
+keybind = ctrl+shift+alt+super+m=resize_split:left,10
+keybind = ctrl+shift+alt+super+n=resize_split:down,10
+keybind = ctrl+shift+alt+super+e=resize_split:up,10
+keybind = ctrl+shift+alt+super+i=resize_split:right,10
+
+# ── Extras ──
+keybind = ctrl+shift+alt+enter=toggle_split_zoom
+keybind = ctrl+shift+alt+q=equalize_splits
+
